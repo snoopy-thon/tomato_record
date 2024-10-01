@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatelessWidget {
-  const AddressPage({super.key});
+  AddressPage({super.key});
+  List<int> demos = List.generate(30, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,18 @@ class AddressPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          Expanded(
+            child: ListView.builder(
+              //shrinkWrap: true,
+              itemCount: demos.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text('address $index'),
+                  subtitle: Text('subtitle $index'),
+                );
+              },
+            ),
           ),
         ],
       ),
