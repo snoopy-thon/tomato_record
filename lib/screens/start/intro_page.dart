@@ -44,13 +44,11 @@ class IntroPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
         child: FilledButton(
-          style: ButtonStyle(
-            //backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            )),
-          ),
+          style: FilledButton.styleFrom(
+              shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          )),
+          //backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
           onPressed: () {},
           child: const Text(
             '내 동네 설정하고 시작하기',
