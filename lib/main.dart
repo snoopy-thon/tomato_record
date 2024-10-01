@@ -46,8 +46,10 @@ class TomatoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        fontFamily: 'DoHyeon',
         primarySwatch: Colors.red,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
+        textTheme: const TextTheme(labelLarge: TextStyle(color: Colors.white)),
       ),
       routerConfig: MyRouter(isAuthenticated).router,
     );
