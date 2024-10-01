@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatelessWidget {
@@ -17,12 +18,34 @@ class AddressPage extends StatelessWidget {
               ),
               hintText: '도로명으로 검색',
               hintStyle: TextStyle(color: Theme.of(context).hintColor),
-              border: const UnderlineInputBorder(
+              enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey),
               ),
               prefixIconConstraints:
                   const BoxConstraints(minHeight: 24, minWidth: 24),
             ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              FilledButton.icon(
+                onPressed: () {},
+                icon: const Icon(
+                  CupertinoIcons.compass,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                style: FilledButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                label: const Text(
+                  '현재 위치로 찾기',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
           ),
         ],
       ),
