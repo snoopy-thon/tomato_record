@@ -23,7 +23,7 @@ class MyRouter {
       ),
       GoRoute(
         path: '/auth',
-        builder: (context, GoRouterState state) => const AuthScreen(),
+        builder: (context, GoRouterState state) => AuthScreen(),
       ),
     ],
     redirect: (context, state) {
