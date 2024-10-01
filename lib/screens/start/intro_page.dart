@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatelessWidget {
-  const IntroPage({super.key});
+  PageController controller;
+  IntroPage(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,11 @@ class IntroPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 )),
-                onPressed: () {},
+                onPressed: () {
+                  controller.animateToPage(1,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease);
+                },
                 child: const Text(
                   '내 동네 설정하고 시작하기',
                 ),
