@@ -48,6 +48,7 @@ class TomatoApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'DoHyeon',
         primarySwatch: Colors.red,
+        hintColor: Colors.grey[350],
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
         textTheme: const TextTheme(labelLarge: TextStyle(color: Colors.white)),
       ),
