@@ -45,11 +45,15 @@ class TomatoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
+      ),
       routerConfig: MyRouter(isAuthenticated).router,
     );
   }
 }
 
 // 인증 상태를 시뮬레이션하는 변수
-bool isAuthenticated = true; // 인증 상태를 바꿔서 테스트 가능
+bool isAuthenticated = false; // 인증 상태를 바꿔서 테스트 가능
 
