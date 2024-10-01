@@ -16,26 +16,39 @@ class IntroPage extends StatelessWidget {
               '토마토마켓',
               style: TextStyle(
                 color: Theme.of(context).colorScheme.primary,
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
+                fontSize: 50,
+                fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(
               height: 40,
             ),
-            ExtendedImage.asset('assets/imgs/carrot_intro.png'),
+            Stack(
+              children: [
+                ExtendedImage.asset('assets/imgs/carrot_intro.png'),
+                Positioned(
+                  left: 50,
+                  right: 50,
+                  top: 50,
+                  bottom: 50,
+                  child:
+                      ExtendedImage.asset('assets/imgs/carrot_intro_pos.png'),
+                ),
+              ],
+            ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 40),
               child: const Text(
                 '우리 동네 중고 직거래 토마토마켓',
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 28,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
             const Text(
               '토마토마켓은 우리동네 직거래 마켓이에요.\n 내 동네를 설정하고 시작해보세요!',
+              style: TextStyle(fontSize: 17),
               textAlign: TextAlign.center,
             ),
           ],
@@ -52,9 +65,6 @@ class IntroPage extends StatelessWidget {
           onPressed: () {},
           child: const Text(
             '내 동네 설정하고 시작하기',
-            style: TextStyle(
-              color: Colors.white,
-            ),
           ),
         ),
       ),
