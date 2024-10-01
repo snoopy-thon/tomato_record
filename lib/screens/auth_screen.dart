@@ -10,6 +10,7 @@ class AuthScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
             IntroPage(_pageController),
