@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tomato_record/screens/start/address_page.dart';
 import 'package:tomato_record/screens/start/intro_page.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -14,9 +15,7 @@ class AuthScreen extends StatelessWidget {
           controller: _pageController,
           children: [
             IntroPage(_pageController),
-            Container(
-              color: Colors.accents[2],
-            ),
+            const AddressPage(),
             Container(
               color: Colors.accents[5],
             ),
