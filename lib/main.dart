@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tomato_record/router.dart';
 import 'package:tomato_record/router/locations.dart';
-import 'package:tomato_record/screens/auth_screen.dart';
+import 'package:tomato_record/screens/start_screen.dart';
 import 'package:tomato_record/screens/splash_screen.dart';
 import 'package:tomato_record/utils/logger.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 3), () => 100),
+        future: Future.delayed(const Duration(seconds: 1), () => 100),
         builder: (context, snapshot) {
           return AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
@@ -46,11 +46,17 @@ class TomatoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        useMaterial3: false, // appbar 색상 변경하기위해 추가
         fontFamily: 'DoHyeon',
-        primarySwatch: Colors.red,
         hintColor: Colors.grey[350],
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
         textTheme: const TextTheme(labelLarge: TextStyle(color: Colors.white)),
+        appBarTheme: const AppBarTheme(
+          elevation: 2,
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.black87),
+        ),
       ),
       routerConfig: MyRouter(isAuthenticated).router,
     );
