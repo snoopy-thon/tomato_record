@@ -6,6 +6,9 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraint) {
+      Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Number Verification'),
@@ -18,9 +21,10 @@ class AuthPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                Flexible(
-                  flex: 1,
-                  child: Image.asset('assets/imgs/tomato.png'),
+                  ExtendedImage.asset(
+                    'assets/imgs/padlock.png',
+                    width: size.width * 0.15,
+                    height: size.height * 0.15,
                 ),
                 const Flexible(
                     flex: 2,
