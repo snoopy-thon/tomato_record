@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tomato_record/constants/common_size.dart';
 
 class IntroPage extends StatelessWidget {
   PageController controller;
@@ -18,7 +19,7 @@ class IntroPage extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             body: Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(commonPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -59,7 +60,7 @@ class IntroPage extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(commonPadding),
               child: FilledButton(
                 style: FilledButton.styleFrom(
                     shape: RoundedRectangleBorder(

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tomato_record/constants/common_size.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -15,7 +16,7 @@ class AuthPage extends StatelessWidget {
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(commonPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -42,7 +43,7 @@ class AuthPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: commonPadding),
               child: FilledButton(
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.grey[350],
