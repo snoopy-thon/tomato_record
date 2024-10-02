@@ -8,8 +8,9 @@ class AddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      minimum: const EdgeInsets.all(16),
+      minimum: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
             decoration: InputDecoration(
@@ -26,30 +27,27 @@ class AddressPage extends StatelessWidget {
                   const BoxConstraints(minHeight: 24, minWidth: 24),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              FilledButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  CupertinoIcons.compass,
-                  color: Colors.white,
-                  size: 20,
-                ),
-                style: FilledButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                label: const Text(
-                  '현재 위치로 찾기',
-                  style: TextStyle(fontSize: 20),
-                ),
+          FilledButton.icon(
+            onPressed: () {},
+            icon: const Icon(
+              CupertinoIcons.compass,
+              color: Colors.white,
+              size: 20,
+            ),
+            style: FilledButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
               ),
-            ],
+              minimumSize: const Size(10, 48),
+            ),
+            label: const Text(
+              '현재 위치로 찾기',
+              style: TextStyle(fontSize: 20),
+            ),
           ),
           Expanded(
             child: ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 16),
               //shrinkWrap: true,
               itemCount: demos.length,
               itemBuilder: (context, index) {
