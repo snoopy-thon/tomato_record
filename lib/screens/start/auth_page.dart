@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:tomato_record/constants/common_size.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
-
+  AuthPage({super.key});
+  final TextEditingController _textEditingController =
+      TextEditingController(text: "010");
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraint) {
@@ -33,6 +34,9 @@ class AuthPage extends StatelessWidget {
               ],
             ),
             TextFormField(
+                controller: _textEditingController,
+                inputFormatters: [MaskedInputFormatter('000 0000 0000')],
+                keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
