@@ -4,6 +4,10 @@ import 'package:tomato_record/constants/common_size.dart';
 
 class AuthPage extends StatelessWidget {
   AuthPage({super.key});
+  final inputBorder = const OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.grey),
+  );
+
   final TextEditingController _textEditingController =
       TextEditingController(text: "010");
   @override
@@ -38,10 +42,8 @@ class AuthPage extends StatelessWidget {
                 inputFormatters: [MaskedInputFormatter('000 0000 0000')],
                 keyboardType: TextInputType.phone,
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                  color: Colors.grey[350]!,
-                )),
+                  focusedBorder: inputBorder,
+                  border: inputBorder,
                 hintText: 'Enter your mobile phone number.',
                 hintStyle: TextStyle(color: Theme.of(context).hintColor),
               ),
