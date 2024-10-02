@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:tomato_record/screens/home_screen.dart';
 
-import 'screens/auth_screen.dart';
+import 'screens/start_screen.dart';
 import 'screens/error_page.dart';
 import 'screens/splash_screen.dart';
 
@@ -22,15 +22,15 @@ class MyRouter {
         builder: (context, GoRouterState state) => const HomeScreen(),
       ),
       GoRoute(
-        path: '/auth',
-        builder: (context, GoRouterState state) => AuthScreen(),
+        path: '/start',
+        builder: (context, GoRouterState state) => StartScreen(),
       ),
     ],
     redirect: (context, state) {
       if (loginState)
         return '/';
       else
-        return '/auth';
+        return '/start';
     },
   );
 }
