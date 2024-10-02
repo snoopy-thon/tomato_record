@@ -11,7 +11,7 @@ class AuthPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Number Verification'),
+          title: const Text('전화번호 로그인'),
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
       body: Padding(
@@ -26,10 +26,9 @@ class AuthPage extends StatelessWidget {
                     width: size.width * 0.15,
                     height: size.height * 0.15,
                 ),
-                const Flexible(
-                    flex: 2,
-                    child: Text(
-                        'Sign up using your mobile number. Your number is securely stored and not shared with anyone else.')),
+                  const Text('''토마토 마켓은 휴대폰 번호로 가입해요.
+번호는 안전하게 보관되며
+어디에도 공개되지 않아요.'''),
               ],
             ),
             TextFormField(
