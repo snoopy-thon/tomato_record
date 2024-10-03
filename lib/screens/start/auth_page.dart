@@ -32,11 +32,17 @@ class AuthPage extends StatelessWidget {
                     width: size.width * 0.15,
                     height: size.height * 0.15,
                 ),
+                  const SizedBox(
+                    width: commonSmallPadding,
+                  ),
                   const Text('''토마토 마켓은 휴대폰 번호로 가입해요.
 번호는 안전하게 보관되며
 어디에도 공개되지 않아요.'''),
               ],
             ),
+              const SizedBox(
+                height: commonPadding,
+              ),
             TextFormField(
                 controller: _textEditingController,
                 inputFormatters: [MaskedInputFormatter('000 0000 0000')],
@@ -45,7 +51,10 @@ class AuthPage extends StatelessWidget {
                   focusedBorder: inputBorder,
                   border: inputBorder,
                 hintText: 'Enter your mobile phone number.',
-                hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                ),
+              ),
+              const SizedBox(
+                height: commonSmallPadding,
               ),
               FilledButton(
                 onPressed: () {},

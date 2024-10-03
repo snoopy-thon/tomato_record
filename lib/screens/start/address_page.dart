@@ -28,6 +28,9 @@ class AddressPage extends StatelessWidget {
                   const BoxConstraints(minHeight: 24, minWidth: 24),
             ),
           ),
+          const SizedBox(
+            height: commonSmallPadding,
+          ),
           FilledButton.icon(
             onPressed: () {},
             icon: const Icon(
