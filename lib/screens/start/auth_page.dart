@@ -11,12 +11,19 @@ class AuthPage extends StatelessWidget {
 
   final TextEditingController _phoneNumberController =
       TextEditingController(text: "010");
+
+  final TextEditingController _codeController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraint) {
       Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
+      return Form(
+        key: _formKey,
+        child: Scaffold(
       appBar: AppBar(
           title: const Text('전화번호 로그인'),
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
@@ -51,14 +58,25 @@ class AuthPage extends StatelessWidget {
               decoration: InputDecoration(
                   focusedBorder: inputBorder,
                   border: inputBorder,
-                hintText: 'Enter your mobile phone number.',
-                ),
+                  ),
+                  validator: (phoneNumber) {
+                    if (phoneNumber != null && phoneNumber.length == 13)
+                      return null;
+                    else
+                      // error
+                      return '전화번호를 다시 입력해주세요!';
+                  },
               ),
               const SizedBox(
                 height: commonSmallPadding,
               ),
               FilledButton(
-                onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState != null) {
+                      bool passed = _formKey.currentState!.validate();
+                      print(passed);
+                    }
+                  },
                 child: const Text(
                   '인증문자 받기',
                 ),
@@ -85,5 +103,6 @@ class AuthPage extends StatelessWidget {
         ),
       ),
     );
+    });
   }
 }
