@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:tomato_record/constants/common_size.dart';
 
 class AuthPage extends StatelessWidget {
