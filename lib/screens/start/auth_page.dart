@@ -85,8 +85,8 @@ class AuthPage extends StatelessWidget {
                 height: commonPadding,
               ),
               TextFormField(
-                controller: _textEditingController,
-                inputFormatters: [MaskedInputFormatter('000 0000 0000')],
+                  controller: _codeController,
+                  inputFormatters: [MaskedInputFormatter('000000')],
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: inputBorder,
