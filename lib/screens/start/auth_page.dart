@@ -9,7 +9,7 @@ class AuthPage extends StatelessWidget {
     borderSide: BorderSide(color: Colors.grey),
   );
 
-  final TextEditingController _textEditingController =
+  final TextEditingController _phoneNumberController =
       TextEditingController(text: "010");
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class AuthPage extends StatelessWidget {
                 height: commonPadding,
               ),
             TextFormField(
-                controller: _textEditingController,
+                  controller: _phoneNumberController,
                 inputFormatters: [MaskedInputFormatter('000 0000 0000')],
                 keyboardType: TextInputType.phone,
               decoration: InputDecoration(
