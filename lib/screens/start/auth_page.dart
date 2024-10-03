@@ -76,16 +76,9 @@ class AuthPage extends StatelessWidget {
               const SizedBox(
                 height: commonSmallPadding,
                   ),
-                ),
+              FilledButton(
                 onPressed: () {},
-                child: Text('Send code',
-                    style: Theme.of(context).textTheme.labelLarge),
-              ),
-            ),
-            const Text(
-              'Changed number? Find account by email',
-              textAlign: TextAlign.center,
-              style: TextStyle(decoration: TextDecoration.underline),
+                child: const Text('인증번호 확인'),
             ),
           ],
         ),
