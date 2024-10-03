@@ -52,6 +52,13 @@ class TomatoApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
         textTheme: const TextTheme(labelLarge: TextStyle(color: Colors.white)),
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ),
         appBarTheme: const AppBarTheme(
           elevation: 2,
           backgroundColor: Colors.white,

@@ -47,14 +47,25 @@ class AuthPage extends StatelessWidget {
                 hintText: 'Enter your mobile phone number.',
                 hintStyle: TextStyle(color: Theme.of(context).hintColor),
               ),
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: commonPadding),
-              child: FilledButton(
-                style: FilledButton.styleFrom(
-                  backgroundColor: Colors.grey[350],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
+              FilledButton(
+                onPressed: () {},
+                child: const Text(
+                  '인증문자 받기',
+                ),
+              ),
+              const SizedBox(
+                height: commonPadding,
+              ),
+              TextFormField(
+                controller: _textEditingController,
+                inputFormatters: [MaskedInputFormatter('000 0000 0000')],
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  border: inputBorder,
+                ),
+              ),
+              const SizedBox(
+                height: commonSmallPadding,
                   ),
                 ),
                 onPressed: () {},

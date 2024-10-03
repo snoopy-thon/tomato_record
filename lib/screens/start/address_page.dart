@@ -36,9 +36,6 @@ class AddressPage extends StatelessWidget {
               size: 20,
             ),
             style: FilledButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
               minimumSize: const Size(10, 48),
             ),
             label: const Text(

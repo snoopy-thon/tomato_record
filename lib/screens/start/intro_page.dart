@@ -62,10 +62,6 @@ class IntroPage extends StatelessWidget {
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.all(commonPadding),
               child: FilledButton(
-                style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                )),
                 onPressed: () {
                   controller.animateToPage(1,
                       duration: const Duration(milliseconds: 500),
