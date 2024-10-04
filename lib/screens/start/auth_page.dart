@@ -63,7 +63,9 @@ class _AuthPageState extends State<AuthPage> {
               const SizedBox(
                 height: commonPadding,
               ),
-            TextFormField(
+                    SizedBox(
+                      height: 50,
+                      child: TextFormField(
                   controller: _phoneNumberController,
                 inputFormatters: [MaskedInputFormatter('000 0000 0000')],
                 keyboardType: TextInputType.phone,
