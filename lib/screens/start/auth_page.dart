@@ -91,6 +91,11 @@ class _AuthPageState extends State<AuthPage> {
                     if (_formKey.currentState != null) {
                       bool passed = _formKey.currentState!.validate();
                       print(passed);
+                          if (passed) {
+                            setState(() {
+                              _verificationStatus = VerificationStatus.codeSent;
+                            });
+                          }
                     }
                   },
                 child: const Text(
