@@ -115,3 +115,5 @@ class _AuthPageState extends State<AuthPage> {
     });
   }
 }
+
+enum VerificationStatus { none, codeSent, verifying, verificationDone }
