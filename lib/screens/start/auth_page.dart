@@ -105,7 +105,17 @@ class _AuthPageState extends State<AuthPage> {
               const SizedBox(
                 height: commonPadding,
               ),
-              TextFormField(
+                    AnimatedOpacity(
+                      curve: Curves.easeInOut,
+                      duration: duration,
+                      opacity: (_verificationStatus == VerificationStatus.none)
+                          ? 0
+                          : 1,
+                      child: AnimatedContainer(
+                        curve: Curves.easeInOut,
+                        duration: duration,
+                        height: getVerificationHeight(_verificationStatus),
+                        child: TextFormField(
                   controller: _codeController,
                   inputFormatters: [MaskedInputFormatter('000000')],
                 keyboardType: TextInputType.number,
@@ -113,12 +123,28 @@ class _AuthPageState extends State<AuthPage> {
                   border: inputBorder,
                 ),
               ),
-              const SizedBox(
-                height: commonSmallPadding,
-                  ),
-              FilledButton(
-                onPressed: () {},
-                child: const Text('인증번호 확인'),
+                      ),
+                    ),
+                    AnimatedContainer(
+                      curve: Curves.easeInOut,
+                      duration: const Duration(seconds: 1),
+                      height: getVerificationBtnHeight(_verificationStatus),
+                      child: FilledButton(
+                        onPressed: () {
+                          if (_formKey.currentState != null) {
+                            bool passed = _formKey.currentState!.validate();
+                            if (passed) {
+                              attemptVerifying();
+                            }
+                          }
+                        },
+                        child:
+                            _verificationStatus == VerificationStatus.verifying
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : const Text('인증번호 확인'),
+                      ),
             ),
           ],
         ),
