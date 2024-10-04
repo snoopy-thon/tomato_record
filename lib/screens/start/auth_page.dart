@@ -67,7 +67,9 @@ class _AuthPageState extends State<AuthPage> {
                       height: 50,
                       child: TextFormField(
                   controller: _phoneNumberController,
-                inputFormatters: [MaskedInputFormatter('000 0000 0000')],
+                        inputFormatters: [
+                          MaskedInputFormatter('000 0000 0000')
+                        ],
                 keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                   focusedBorder: inputBorder,
