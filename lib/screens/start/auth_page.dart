@@ -3,8 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:tomato_record/constants/common_size.dart';
 
-class AuthPage extends StatelessWidget {
-  AuthPage({super.key});
+class AuthPage extends StatefulWidget {
+  const AuthPage({super.key});
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+Duration duration = const Duration(milliseconds: 300);
+
+class _AuthPageState extends State<AuthPage> {
   final inputBorder = const OutlineInputBorder(
     borderSide: BorderSide(color: Colors.grey),
   );
