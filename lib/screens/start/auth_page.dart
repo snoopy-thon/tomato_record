@@ -31,8 +31,9 @@ class _AuthPageState extends State<AuthPage> {
     return LayoutBuilder(
       builder: (context, constraint) {
       Size size = MediaQuery.of(context).size;
-
-      return Form(
+        return IgnorePointer(
+          ignoring: _verificationStatus == VerificationStatus.verifying,
+          child: Form(
         key: _formKey,
         child: Scaffold(
       appBar: AppBar(
