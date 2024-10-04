@@ -24,6 +24,8 @@ class _AuthPageState extends State<AuthPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  VerificationStatus _verificationStatus = VerificationStatus.none;
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraint) {
