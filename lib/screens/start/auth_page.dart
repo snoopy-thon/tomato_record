@@ -112,7 +112,30 @@ class _AuthPageState extends State<AuthPage> {
       ),
         ),
     );
-    });
+      },
+    );
+  }
+
+  double getVerificationBtnHeight(VerificationStatus status) {
+    switch (status) {
+      case VerificationStatus.none:
+        return 0;
+      case VerificationStatus.codeSent:
+      case VerificationStatus.verifying:
+      case VerificationStatus.verificationDone:
+        return 45;
+    }
+  }
+
+  double getVerificationHeight(VerificationStatus status) {
+    switch (status) {
+      case VerificationStatus.none:
+        return 0;
+      case VerificationStatus.codeSent:
+      case VerificationStatus.verifying:
+      case VerificationStatus.verificationDone:
+        return 50 + commonSmallPadding;
+    }
   }
 }
 
