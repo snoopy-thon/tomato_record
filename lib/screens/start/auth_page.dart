@@ -155,6 +155,20 @@ class _AuthPageState extends State<AuthPage> {
     );
   }
 
+  void attemptVerifying() async {
+    setState(() {
+      _verificationStatus = VerificationStatus.verifying;
+    });
+
+    await Future.delayed(const Duration(seconds: 1));
+
+    setState(() {
+      _verificationStatus = VerificationStatus.verificationDone;
+    });
+
+    context.read<UserProvider>().setUserState(true);
+  }
+
   double getVerificationBtnHeight(VerificationStatus status) {
     switch (status) {
       case VerificationStatus.none:
