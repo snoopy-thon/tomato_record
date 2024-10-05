@@ -73,6 +73,7 @@ class TomatoApp extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),
+                minimumSize: const Size(48, 48),
           ),
         ),
         appBarTheme: const AppBarTheme(
