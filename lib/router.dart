@@ -27,7 +27,7 @@ class MyRouter {
       ),
     ],
     redirect: (context, state) {
-      if (loginState)
+      if (loginState.userState) {
         return '/';
       else
         return '/start';
