@@ -44,6 +44,22 @@ class TomatoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserProvider>(
+          lazy: false,
+          create: (context) => UserProvider(),
+        ),
+        Provider(
+          lazy: false,
+          create: (context) {
+            final UserProvider loginState = context.read<UserProvider>();
+            return MyRouter(loginState);
+          },
+        ),
+      ],
+      child: Builder(builder: (context) {
+        final router = Provider.of<MyRouter>(context, listen: false).router;
     return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: false, // appbar 색상 변경하기위해 추가
@@ -65,7 +81,11 @@ class TomatoApp extends StatelessWidget {
           titleTextStyle: TextStyle(color: Colors.black87),
         ),
       ),
-      routerConfig: MyRouter(isAuthenticated).router,
+          routerDelegate: router.routerDelegate,
+          routeInformationProvider: router.routeInformationProvider,
+          routeInformationParser: router.routeInformationParser,
+        );
+      }),
     );
   }
 }
