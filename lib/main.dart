@@ -79,6 +79,7 @@ class TomatoApp extends StatelessWidget {
           elevation: 2,
           backgroundColor: Colors.white,
           titleTextStyle: TextStyle(color: Colors.black87),
+              actionsIconTheme: IconThemeData(color: Colors.black87),
         ),
       ),
           routerDelegate: router.routerDelegate,
