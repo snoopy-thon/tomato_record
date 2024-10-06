@@ -32,7 +32,12 @@ class AddressPage extends StatelessWidget {
             height: commonSmallPadding,
           ),
           FilledButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              final text = _addressController.text;
+              if (text.isNotEmpty) {
+                AddressService().searchAddressByStr(text);
+              }
+            },
             icon: const Icon(
               CupertinoIcons.compass,
               color: Colors.white,
