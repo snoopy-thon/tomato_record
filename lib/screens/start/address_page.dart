@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tomato_record/constants/common_size.dart';
+import 'package:tomato_record/screens/start/address_service.dart';
+import 'package:tomato_record/utils/logger.dart';
 
 class AddressPage extends StatelessWidget {
   AddressPage({super.key});
+  final TextEditingController _addressController = TextEditingController();
   List<int> demos = List.generate(30, (index) => index);
 
   @override
@@ -14,6 +17,7 @@ class AddressPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
+            controller: _addressController,
             decoration: InputDecoration(
               prefixIcon: const Icon(
                 Icons.search,
@@ -35,6 +39,7 @@ class AddressPage extends StatelessWidget {
             onPressed: () {
               final text = _addressController.text;
               if (text.isNotEmpty) {
+                logger.d('text: $text');
                 AddressService().searchAddressByStr(text);
               }
             },
