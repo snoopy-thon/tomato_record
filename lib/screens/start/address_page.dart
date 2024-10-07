@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:tomato_record/constants/common_size.dart';
 import 'package:tomato_record/screens/start/address_service.dart';
 import 'package:tomato_record/utils/logger.dart';
@@ -47,12 +48,33 @@ class _AddressPageState extends State<AddressPage> {
             height: commonSmallPadding,
           ),
           FilledButton.icon(
-            onPressed: () {
-              final text = _addressController.text;
-              if (text.isNotEmpty) {
-                logger.d('text: $text');
-                AddressService().searchAddressByStr(text);
+            onPressed: () async {
+              Location location = Location();
+
+              bool serviceEnabled;
+              PermissionStatus permissionGranted;
+              LocationData locationData;
+
+              serviceEnabled = await location.serviceEnabled();
+              if (!serviceEnabled) {
+                serviceEnabled = await location.requestService();
+                if (!serviceEnabled) {
+                  return;
+                }
               }
+
+              permissionGranted = await location.hasPermission();
+              if (permissionGranted == PermissionStatus.denied) {
+                permissionGranted = await location.requestPermission();
+                if (permissionGranted != PermissionStatus.granted) {
+                  return;
+                }
+              }
+
+              locationData = await location.getLocation();
+              logger.d(locationData);
+              AddressService().findAddressByCoordinate(
+                  log: locationData.longitude!, lat: locationData.latitude!);
             },
             icon: const Icon(
               CupertinoIcons.compass,
