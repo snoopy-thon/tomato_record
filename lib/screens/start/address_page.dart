@@ -13,7 +13,8 @@ class AddressPage extends StatefulWidget {
 
 class _AddressPageState extends State<AddressPage> {
   final TextEditingController _addressController = TextEditingController();
-  List<int> demos = List.generate(30, (index) => index);
+
+  AddressModel? _addressModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,10 @@ class _AddressPageState extends State<AddressPage> {
         children: [
           TextFormField(
             controller: _addressController,
+            onFieldSubmitted: (text) async {
+              _addressModel = await AddressService().searchAddressByStr(text);
+              setState(() {});
+            },
             decoration: InputDecoration(
               prefixIcon: const Icon(
                 Icons.search,
@@ -68,9 +73,17 @@ class _AddressPageState extends State<AddressPage> {
               //shrinkWrap: true,
               itemCount: demos.length,
               itemBuilder: (context, index) {
+                if (_addressModel == null ||
+                    _addressModel!.result == null ||
+                    _addressModel!.result!.items == null ||
+                    _addressModel!.result!.items![index].address == null)
+                  return Container();
                 return ListTile(
-                  title: Text('address $index'),
-                  subtitle: Text('subtitle $index'),
+                  title: Text(
+                      _addressModel!.result!.items![index].address!.road ?? ""),
+                  subtitle: Text(
+                      _addressModel!.result!.items![index].address!.parcel ??
+                          ""),
                 );
               },
             ),
