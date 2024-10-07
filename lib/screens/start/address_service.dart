@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:tomato_record/constants/keys.dart';
+import 'package:tomato_record/data/address_model.dart';
 
 import '../../utils/logger.dart';
 
@@ -16,10 +17,12 @@ class AddressService {
 
     final response = await Dio()
         .get('https://api.vworld.kr/req/search', queryParameters: formData)
-        // ignore: body_might_complete_normally_catch_error
         .catchError((e) {
       logger.e(e.message);
     });
-    logger.d(response);
+
+    AddressModel addressModel =
+        AddressModel.fromJson(response.data["response"]);
+    logger.d(addressModel);
   }
 }
