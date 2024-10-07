@@ -71,7 +71,11 @@ class _AddressPageState extends State<AddressPage> {
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(vertical: commonPadding),
               //shrinkWrap: true,
-              itemCount: demos.length,
+              itemCount: (_addressModel == null ||
+                      _addressModel!.result == null ||
+                      _addressModel!.result!.items == null)
+                  ? 0
+                  : _addressModel!.result!.items!.length,
               itemBuilder: (context, index) {
                 if (_addressModel == null ||
                     _addressModel!.result == null ||
