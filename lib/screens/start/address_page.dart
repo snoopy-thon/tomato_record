@@ -4,8 +4,14 @@ import 'package:tomato_record/constants/common_size.dart';
 import 'package:tomato_record/screens/start/address_service.dart';
 import 'package:tomato_record/utils/logger.dart';
 
-class AddressPage extends StatelessWidget {
-  AddressPage({super.key});
+class AddressPage extends StatefulWidget {
+  const AddressPage({super.key});
+
+  @override
+  State<AddressPage> createState() => _AddressPageState();
+}
+
+class _AddressPageState extends State<AddressPage> {
   final TextEditingController _addressController = TextEditingController();
   List<int> demos = List.generate(30, (index) => index);
 
