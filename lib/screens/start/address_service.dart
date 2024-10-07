@@ -5,7 +5,7 @@ import 'package:tomato_record/data/address_model.dart';
 import '../../utils/logger.dart';
 
 class AddressService {
-  void searchAddressByStr(String text) async {
+  Future<AddressModel> searchAddressByStr(String text) async {
     final formData = {
       'key': VWORLD_KEY,
       'request': 'search',
@@ -24,5 +24,25 @@ class AddressService {
     AddressModel addressModel =
         AddressModel.fromJson(response.data["response"]);
     logger.d(addressModel);
+    return addressModel;
+  }
+
+  Future<void> findAddressByCoordinate(
+      {required double log, required double lat}) async {
+    final Map<String, dynamic> formData = {
+      'key': VWORLD_KEY,
+      'service': 'address',
+      'type': 'BOTH',
+      'request': 'GetAddress',
+      'point': '$log, $lat',
+    };
+    final response = await Dio()
+        .get('https://api.vworld.kr/req/address', queryParameters: formData)
+        .catchError((e) {
+      logger.e(e.message);
+    });
+
+    logger.d(response);
+    return;
   }
 }
