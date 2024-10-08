@@ -80,7 +80,6 @@ class TomatoApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           elevation: 2,
           backgroundColor: Colors.white,
-          titleTextStyle: TextStyle(color: Colors.black87),
               actionsIconTheme: IconThemeData(color: Colors.black87),
         ),
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
