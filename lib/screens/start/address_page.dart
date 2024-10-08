@@ -24,6 +24,13 @@ class _AddressPageState extends State<AddressPage> {
   bool _isGettingLocation = false;
 
   @override
+  void dispose() {
+    // Stateful 위젯이고 controller를 사용할 경우 , 메모리 낭비 방지를 위해 dispose를 해준다.
+    _addressController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       minimum: const EdgeInsets.symmetric(horizontal: commonPadding),
