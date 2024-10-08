@@ -63,7 +63,7 @@ class TomatoApp extends StatelessWidget {
         final router = Provider.of<MyRouter>(context, listen: false).router;
     return MaterialApp.router(
       theme: ThemeData(
-        useMaterial3: false, // appbar 색상 변경하기위해 추가
+            useMaterial3: false, // appbar 색상 변경하기 위해 추가
         fontFamily: 'DoHyeon',
         hintColor: Colors.grey[350],
         scaffoldBackgroundColor: Colors.white,
