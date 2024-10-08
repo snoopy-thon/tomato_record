@@ -95,7 +95,3 @@ class TomatoApp extends StatelessWidget {
     );
   }
 }
-
-// 인증 상태를 시뮬레이션하는 변수
-bool isAuthenticated = false; // 인증 상태를 바꿔서 테스트 가능
-
