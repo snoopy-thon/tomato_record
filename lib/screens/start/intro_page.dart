@@ -8,8 +8,7 @@ import 'package:tomato_record/states/user_provider.dart';
 import '../../utils/logger.dart';
 
 class IntroPage extends StatelessWidget {
-  PageController controller;
-  IntroPage(this.controller, {super.key});
+  const IntroPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +67,11 @@ class IntroPage extends StatelessWidget {
               padding: const EdgeInsets.all(commonPadding),
               child: FilledButton(
                 onPressed: () {
-                  controller.animateToPage(1,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.ease);
+                  context.read<PageController>().animateToPage(
+                        1,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
                 },
                 child: const Text(
                   '내 동네 설정하고 시작하기',

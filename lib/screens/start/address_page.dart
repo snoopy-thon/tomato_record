@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tomato_record/constants/common_size.dart';
 import 'package:tomato_record/data/address_model.dart';
@@ -144,7 +145,7 @@ class _AddressPageState extends State<AddressPage> {
                     return Container();
                   return ListTile(
                     onTap: () {
-                      _savedAddressOnSharedPreference(
+                      _saveAddressAndGoToNextPage(
                           _addressModel!.result!.items![index].address!.road ??
                               "");
                     },
@@ -170,7 +171,7 @@ class _AddressPageState extends State<AddressPage> {
                     return Container();
                   return ListTile(
                     onTap: () {
-                      _savedAddressOnSharedPreference(
+                      _saveAddressAndGoToNextPage(
                           _GeocodeModelList[index].result![0].text ?? "");
                     },
                     title: Text(_GeocodeModelList[index].result![0].text ?? ""),
@@ -183,6 +184,16 @@ class _AddressPageState extends State<AddressPage> {
         ],
       ),
     );
+  }
+
+  _saveAddressAndGoToNextPage(String address) async {
+    await _savedAddressOnSharedPreference(address);
+
+    context.read<PageController>().animateToPage(
+          2,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
   }
 
   _savedAddressOnSharedPreference(String address) async {
