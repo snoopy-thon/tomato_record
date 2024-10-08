@@ -10,6 +10,7 @@ import 'screens/home_screen.dart';
 
 void main() {
   logger.d('My first log by logger!!');
+  Provider.debugCheckInvalidValueType = null;
   runApp(const MyApp());
 }
 
