@@ -43,8 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Text('$_selectedIndex'),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          Container(
+            color: Colors.accents[0],
+          ),
+          Container(
+            color: Colors.accents[1],
+          ),
+          Container(
+            color: Colors.accents[2],
+          ),
+          Container(
+            color: Colors.accents[3],
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
