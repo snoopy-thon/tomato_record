@@ -19,7 +19,7 @@ class _AddressPageState extends State<AddressPage> {
   final TextEditingController _addressController = TextEditingController();
 
   AddressModel? _addressModel;
-  final List<GeocodeModel> _addressModel2 = [];
+  final List<GeocodeModel> _GeocodeModelList = [];
   bool _isGettingLocation = false;
 
   @override
