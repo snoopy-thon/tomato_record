@@ -82,6 +82,10 @@ class TomatoApp extends StatelessWidget {
           titleTextStyle: TextStyle(color: Colors.black87),
               actionsIconTheme: IconThemeData(color: Colors.black87),
         ),
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              selectedItemColor: Colors.black87,
+              unselectedItemColor: Colors.black26,
+            ),
       ),
           routerDelegate: router.routerDelegate,
           routeInformationProvider: router.routeInformationProvider,
