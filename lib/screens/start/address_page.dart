@@ -32,6 +32,7 @@ class _AddressPageState extends State<AddressPage> {
           TextFormField(
             controller: _addressController,
             onFieldSubmitted: (text) async {
+              _GeocodeModelList.clear();
               _addressModel = await AddressService().searchAddressByStr(text);
               setState(() {});
             },
@@ -55,6 +56,7 @@ class _AddressPageState extends State<AddressPage> {
           FilledButton.icon(
             onPressed: () async {
               _addressModel = null;
+              _GeocodeModelList.clear();
 
               setState(() {
                 _isGettingLocation = true;
@@ -88,7 +90,7 @@ class _AddressPageState extends State<AddressPage> {
                       log: locationData.longitude!,
                       lat: locationData.latitude!);
 
-              _addressModel2.addAll(addresses);
+              _GeocodeModelList.addAll(addresses);
 
               setState(() {
                 _isGettingLocation = false;
@@ -116,31 +118,51 @@ class _AddressPageState extends State<AddressPage> {
               style: const TextStyle(fontSize: 20),
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: commonPadding),
-              //shrinkWrap: true,
-              itemCount: (_addressModel == null ||
+          if (_addressModel != null)
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: commonPadding),
+                //shrinkWrap: true,
+                itemCount: (_addressModel == null ||
+                        _addressModel!.result == null ||
+                        _addressModel!.result!.items == null)
+                    ? 0
+                    : _addressModel!.result!.items!.length,
+                itemBuilder: (context, index) {
+                  if (_addressModel == null ||
                       _addressModel!.result == null ||
-                      _addressModel!.result!.items == null)
-                  ? 0
-                  : _addressModel!.result!.items!.length,
-              itemBuilder: (context, index) {
-                if (_addressModel == null ||
-                    _addressModel!.result == null ||
-                    _addressModel!.result!.items == null ||
-                    _addressModel!.result!.items![index].address == null)
-                  return Container();
-                return ListTile(
-                  title: Text(
-                      _addressModel!.result!.items![index].address!.road ?? ""),
-                  subtitle: Text(
-                      _addressModel!.result!.items![index].address!.parcel ??
-                          ""),
-                );
-              },
+                      _addressModel!.result!.items == null ||
+                      _addressModel!.result!.items![index].address == null)
+                    return Container();
+                  return ListTile(
+                    title: Text(
+                        _addressModel!.result!.items![index].address!.road ??
+                            ""),
+                    subtitle: Text(
+                        _addressModel!.result!.items![index].address!.parcel ??
+                            ""),
+                  );
+                },
+              ),
             ),
-          ),
+          if (_GeocodeModelList.isNotEmpty)
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: commonPadding),
+                //shrinkWrap: true,
+                itemCount: _GeocodeModelList.length,
+                itemBuilder: (context, index) {
+                  if (_GeocodeModelList[index].result == null ||
+                      _GeocodeModelList[index].result!.isEmpty)
+                    return Container();
+                  return ListTile(
+                    title: Text(_GeocodeModelList[index].result![0].text ?? ""),
+                    subtitle:
+                        Text(_GeocodeModelList[index].result![0].zipcode ?? ""),
+                  );
+                },
+              ),
+            ),
         ],
       ),
     );
