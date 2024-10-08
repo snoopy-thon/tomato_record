@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:tomato_record/constants/common_size.dart';
+import 'package:tomato_record/data/address_model.dart';
 import 'package:tomato_record/screens/start/address_service.dart';
 import 'package:tomato_record/utils/logger.dart';
+
+import '../../data/geocode_model.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});
@@ -16,6 +19,8 @@ class _AddressPageState extends State<AddressPage> {
   final TextEditingController _addressController = TextEditingController();
 
   AddressModel? _addressModel;
+  final List<GeocodeModel> _addressModel2 = [];
+  bool _isGettingLocation = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +54,11 @@ class _AddressPageState extends State<AddressPage> {
           ),
           FilledButton.icon(
             onPressed: () async {
+              _addressModel = null;
+
+              setState(() {
+                _isGettingLocation = true;
+              });
               Location location = Location();
 
               bool serviceEnabled;
@@ -73,20 +83,37 @@ class _AddressPageState extends State<AddressPage> {
 
               locationData = await location.getLocation();
               logger.d(locationData);
-              AddressService().findAddressByCoordinate(
-                  log: locationData.longitude!, lat: locationData.latitude!);
+              List<GeocodeModel> addresses = await AddressService()
+                  .findAddressByCoordinate(
+                      log: locationData.longitude!,
+                      lat: locationData.latitude!);
+
+              _addressModel2.addAll(addresses);
+
+              setState(() {
+                _isGettingLocation = false;
+              });
             },
-            icon: const Icon(
-              CupertinoIcons.compass,
-              color: Colors.white,
-              size: 20,
-            ),
+            icon: _isGettingLocation
+                ? const SizedBox(
+                    width: 15,
+                    height: 15,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 3,
+                    ),
+                  )
+                : const Icon(
+                    CupertinoIcons.compass,
+                    color: Colors.white,
+                    size: 20,
+                  ),
             style: FilledButton.styleFrom(
               minimumSize: const Size(10, 48),
             ),
-            label: const Text(
-              '현재 위치로 찾기',
-              style: TextStyle(fontSize: 20),
+            label: Text(
+              _isGettingLocation ? '위치 찾는 중...' : '현재 위치 찾기',
+              style: const TextStyle(fontSize: 20),
             ),
           ),
           Expanded(
