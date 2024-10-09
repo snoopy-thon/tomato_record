@@ -68,7 +68,17 @@ class TomatoApp extends StatelessWidget {
         hintColor: Colors.grey[350],
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
-        textTheme: const TextTheme(labelLarge: TextStyle(color: Colors.white)),
+            textTheme: const TextTheme(
+              labelLarge: TextStyle(color: Colors.white),
+              bodyLarge: TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+              ),
+              bodyMedium: TextStyle(
+                color: Colors.grey,
+                fontSize: 13,
+              ),
+            ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
             shape: RoundedRectangleBorder(
