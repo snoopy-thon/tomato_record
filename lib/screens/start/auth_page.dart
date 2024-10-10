@@ -94,13 +94,14 @@ class _AuthPageState extends State<AuthPage> {
                       height: commonSmallPadding,
                     ),
                     FilledButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState != null) {
                           bool passed = _formKey.currentState!.validate();
                           print(passed);
                           if (passed) {
                             setState(() {
-                              _verificationStatus = VerificationStatus.codeSent;
+                                  _verificationStatus =
+                                      VerificationStatus.codeSent;
                             });
                           }
                         }
